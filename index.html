@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sitio educativo sobre Sistemas Operativos de Red, sus características, componentes, servicios, seguridad, ventajas y funcionamiento.">
+  <meta name="author" content="NetOS">
+  <title>Sistemas Operativos de Red | NetOS</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#inicio">Saltar al contenido principal</a>
+
+  <!-- ===== HEADER / NAVEGACIÓN ===== -->
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a href="#inicio" class="nav__brand" aria-label="NetOS - ir al inicio">
+        <span class="nav__logo">
+          <img src="assets/logo1.png" alt="Logo de NetOS" width="30" height="30">
+        </span>
+        <span class="nav__titles">
+          <span class="nav__name">NetOS</span>
+          <span class="nav__subtitle">Sistemas Operativos de Red</span>
+        </span>
+      </a>
+
+      <button class="nav__toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="5" width="16" height="2" rx="1" fill="currentColor"></rect>
+          <rect x="4" y="11" width="16" height="2" rx="1" fill="currentColor"></rect>
+          <rect x="4" y="17" width="16" height="2" rx="1" fill="currentColor"></rect>
+        </svg>
+      </button>
+
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#que-es">¿Qué es?</a></li>
+        <li><a href="#caracteristicas">Características</a></li>
+        <li><a href="#componentes">Componentes</a></li>
+        <li><a href="#tipos">Tipos</a></li>
+        <li><a href="#sistemas">Sistemas conocidos</a></li>
+        <li><a href="#comparacion">Comparación</a></li>
+        <li><a href="#seguridad">Seguridad</a></li>
+        <li><a href="#ventajas">Ventajas y desventajas</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar a modo claro">
+        <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <span class="badge badge--tech">CONCEPTO</span>
+          <h1 id="hero-title">Sistemas Operativos de Red</h1>
+          <p class="hero__subtitle">La base para administrar, conectar y proteger los recursos de una red informática.</p>
+          <p class="hero__intro">
+            Un Sistema Operativo de Red (SOR) es un software que permite administrar equipos conectados entre sí: gestiona
+            usuarios, archivos compartidos, permisos y servicios, para que todas las computadoras de una red trabajen como un conjunto organizado.
+          </p>
+          <div class="hero__actions">
+            <a href="#que-es" class="btn btn--primary">Explorar contenido</a>
+            <a href="#quiz" class="btn btn--secondary">Realizar quiz</a>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="network-visual">
+            <svg viewBox="0 0 320 300" class="network-visual__svg" role="img" aria-label="Representación esquemática de una red informática">
+              <defs>
+                <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#0474ad"></stop>
+                  <stop offset="100%" stop-color="#2aa7d8"></stop>
+                </linearGradient>
+              </defs>
+
+              <g class="network-visual__links">
+                <path d="M115 90 C 80 130, 60 160, 45 200"></path>
+                <path d="M160 65 L 205 200"></path>
+                <path d="M205 90 C 240 130, 260 160, 275 200"></path>
+                <path d="M160 65 L 115 90"></path>
+                <path d="M160 65 L 205 90"></path>
+                <path d="M45 200 L 160 235"></path>
+                <path d="M160 235 L 275 200"></path>
+              </g>
+
+              <g class="network-visual__nodes">
+                <circle cx="160" cy="52" r="18"></circle>
+                <text x="160" y="16" text-anchor="middle" class="network-visual__label">SERVIDOR</text>
+
+                <circle cx="115" cy="90" r="11"></circle>
+                <circle cx="205" cy="90" r="11"></circle>
+
+                <circle cx="45" cy="200" r="11"></circle>
+                <text x="45" y="223" text-anchor="middle" class="network-visual__label">PC 1</text>
+
+                <circle cx="160" cy="235" r="11"></circle>
+                <text x="160" y="258" text-anchor="middle" class="network-visual__label">PC 2</text>
+
+                <circle cx="275" cy="200" r="11"></circle>
+                <text x="275" y="223" text-anchor="middle" class="network-visual__label">PC 3</text>
+              </g>
+            </svg>
+
+            <svg viewBox="0 0 120 30" class="network-mini" role="img" aria-label="Indicador visual de red con nodos conectados">
+              <g class="network-mini__links">
+                <path d="M15 15 H 55"></path>
+                <path d="M65 15 H 105"></path>
+                <path d="M35 8 L 45 22"></path>
+                <path d="M85 8 L 75 22"></path>
+              </g>
+              <g class="network-mini__nodes">
+                <circle cx="15" cy="15" r="6"></circle>
+                <circle cx="35" cy="8" r="5"></circle>
+                <circle cx="45" cy="22" r="5"></circle>
+                <circle cx="55" cy="15" r="6"></circle>
+                <circle cx="65" cy="15" r="6"></circle>
+                <circle cx="85" cy="8" r="5"></circle>
+                <circle cx="75" cy="22" r="5"></circle>
+                <circle cx="105" cy="15" r="6"></circle>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BUSCADOR ===== -->
+    <section class="search-section" aria-label="Buscador interno">
+      <div class="container">
+        <div class="search-box">
+          <svg class="search-box__icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <input type="text" id="buscador" class="search-box__input" placeholder="Buscar un concepto..." aria-label="Buscar un concepto">
+        </div>
+        <p class="search-box__message" id="searchMessage" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ===== ¿QUÉ ES? ===== -->
+    <section id="que-es" class="section" aria-labelledby="quees-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--concept">CONCEPTO</span>
+          <h2 id="quees-title">¿Qué es un Sistema Operativo de Red?</h2>
+        </header>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3 class="card__title">¿Qué es un sistema operativo?</h3>
+            <p>
+              Es el software principal de una computadora. Administra el hardware (procesador, memoria, disco) y permite
+              ejecutar programas. Un ejemplo conocido es Windows, Linux o macOS.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">¿Qué es una red informática?</h3>
+            <p>
+              Es un conjunto de equipos conectados entre sí que comparten información y recursos, como archivos,
+              impresoras o acceso a Internet. La conexión puede ser por cables o de forma inalámbrica.
+            </p>
+          </div>
+          <div class="card card--wide">
+            <h3 class="card__title">¿Qué es un Sistema Operativo de Red?</h3>
+            <p>
+              Es un sistema operativo orientado a administrar una red: gestiona los equipos conectados, los usuarios y
+              los recursos compartidos. Combina la administración de un servidor con servicios para el resto de los equipos.
+            </p>
+          </div>
+          <div class="card card--wide">
+            <h3 class="card__title">¿Para qué sirve?</h3>
+            <p>
+              Permite administrar recursos y servicios dentro de una red, facilitando la comunicación entre equipos y la
+              administración de usuarios, archivos, permisos y dispositivos de manera centralizada.
+            </p>
+          </div>
+        </div>
+
+        <div class="featured-card">
+          <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2 3 7v10l9 5 9-5V7l-9-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+            <path d="M12 2v20M3 7h18" stroke="currentColor" stroke-width="1.6"></path>
+          </svg>
+          <p>
+            Un Sistema Operativo de Red es un software diseñado para administrar y proporcionar servicios a diferentes
+            equipos conectados mediante una red.
+          </p>
+        </div>
+
+        <div class="schema" role="img" aria-label="Esquema del SOR administrando usuarios, recursos y servicios">
+          <div class="schema__box schema__box--top">SISTEMA OPERATIVO DE RED</div>
+          <div class="schema__links">
+            <span class="schema__line"></span>
+            <span class="schema__line"></span>
+            <span class="schema__line"></span>
+          </div>
+          <div class="schema__columns">
+            <div class="schema__column">
+              <div class="schema__box">Usuarios</div>
+              <ul class="schema__list">
+                <li>Permisos</li>
+                <li>Cuentas</li>
+              </ul>
+            </div>
+            <div class="schema__column">
+              <div class="schema__box">Recursos</div>
+              <ul class="schema__list">
+                <li>Archivos</li>
+                <li>Carpetas</li>
+              </ul>
+            </div>
+            <div class="schema__column">
+              <div class="schema__box">Servicios</div>
+              <ul class="schema__list">
+                <li>Impresión</li>
+                <li>Comunicación</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CARACTERÍSTICAS ===== -->
+    <section id="caracteristicas" class="section section--alt" aria-labelledby="caract-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--feature">CARACTERÍSTICA</span>
+          <h2 id="caract-title">Características de un SOR</h2>
+          <p>Estas son las funciones principales que hacen posible administrar una red desde un sistema central.</p>
+        </header>
+
+        <div class="cards-grid" data-search-group>
+          <article class="card" data-search="administracion usuarios cuentas permisos">
+            <div class="card__icon" aria-hidden="true">👥</div>
+            <h3 class="card__title">Administración de usuarios</h3>
+            <p>Permite crear cuentas, administrar usuarios y establecer permisos.</p>
+          </article>
+
+          <article class="card" data-search="administracion recursos archivos carpetas impresoras">
+            <div class="card__icon" aria-hidden="true">🗂️</div>
+            <h3 class="card__title">Administración de recursos</h3>
+            <p>Permite controlar recursos compartidos como archivos, carpetas, impresoras y dispositivos.</p>
+          </article>
+
+          <article class="card" data-search="seguridad acceso autenticacion politicas">
+            <div class="card__icon" aria-hidden="true">🔒</div>
+            <h3 class="card__title">Seguridad</h3>
+            <p>Permite controlar el acceso mediante autenticación, permisos y políticas de seguridad.</p>
+          </article>
+
+          <article class="card" data-search="comparticion archivos acceso red">
+            <div class="card__icon" aria-hidden="true">📁</div>
+            <h3 class="card__title">Compartición de archivos</h3>
+            <p>Permite que diferentes equipos accedan a archivos almacenados en la red.</p>
+          </article>
+
+          <article class="card" data-search="administracion centralizada servidor usuarios recursos">
+            <div class="card__icon" aria-hidden="true">🖥️</div>
+            <h3 class="card__title">Administración centralizada</h3>
+            <p>Facilita administrar usuarios y recursos desde un servidor o sistema central.</p>
+          </article>
+
+          <article class="card" data-search="comunicacion equipos intercambiar informacion servicios">
+            <div class="card__icon" aria-hidden="true">🌐</div>
+            <h3 class="card__title">Comunicación entre equipos</h3>
+            <p>Permite que los dispositivos conectados intercambien información y utilicen servicios de red.</p>
+          </article>
+
+          <article class="card" data-search="gestion impresoras compartir administrar">
+            <div class="card__icon" aria-hidden="true">🖨️</div>
+            <h3 class="card__title">Gestión de impresoras</h3>
+            <p>Permite compartir y administrar impresoras dentro de una red.</p>
+          </article>
+
+          <article class="card" data-search="copias seguridad respaldo proteccion recuperacion">
+            <div class="card__icon" aria-hidden="true">💾</div>
+            <h3 class="card__title">Copias de seguridad</h3>
+            <p>Puede facilitar la protección y recuperación de información almacenada en los sistemas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPONENTES ===== -->
+    <section id="componentes" class="section" aria-labelledby="comp-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--feature">COMPONENTES</span>
+          <h2 id="comp-title">Componentes de un sistema de red</h2>
+          <p>Cada componente cumple una función específica dentro del sistema operativo de red.</p>
+        </header>
+
+        <div class="componentes">
+          <details class="componente" open>
+            <summary>Servidor <span class="componente__tag">¿Qué es? ¿Para qué sirve? Ejemplo</span></summary>
+            <div class="componente__body">
+              <p><strong>Qué es:</strong> un equipo potente que brinda recursos o servicios a otros equipos de la red.</p>
+              <p><strong>Para qué sirve:</strong> almacena archivos, ejecuta servicios y administra las peticiones de los clientes.</p>
+              <p><strong>Ejemplo:</strong> un servidor de archivos que guarda documentos compartidos.</p>
+            </div>
+          </details>
+
+          <details class="componente">
+            <summary>Clientes <span class="componente__tag">¿Qué es? ¿Para qué sirve? Ejemplo</span></summary>
+            <div class="componente__body">
+              <p><strong>Qué es:</strong> los equipos que utilizan los recursos o servicios proporcionados por el servidor.</p>
+              <p><strong>Para qué sirve:</strong> permiten a los usuarios finales conectarse y aprovechar los servicios de la red.</p>
+              <p><strong>Ejemplo:</strong> una PC de escritorio que consulta archivos guardados en el servidor.</p>
+            </div>
+          </details>
+
+          <details class="componente">
+            <summary>Usuarios <span class="componente__tag">¿Qué es? ¿Para qué sirve? Ejemplo</span></summary>
+            <div class="componente__body">
+              <p><strong>Qué es:</strong> cada cuenta de persona que puede acceder a la red.</p>
+              <p><strong>Para qué sirve:</strong> identificar a cada individuo y aplicar sus permisos en los recursos.</p>
+              <p><strong>Ejemplo:</strong> un usuario llamado "juan" con acceso a la carpeta de documentos.</p>
+            </div>
+          </details>
+
+          <details class="componente">
+            <summary>Recursos compartidos <span class="componente__tag">¿Qué es? ¿Para qué sirve? Ejemplo</span></summary>
+            <div class="componente__body">
+              <p><strong>Qué es:</strong> archivos, carpetas, impresoras o dispositivos que se ponen a disposición de la red.</p>
+              <p><strong>Para qué sirve:</strong> permitir que varios equipos utilicen el mismo recurso sin duplicarlo.</p>
+              <p><strong>Ejemplo:</strong> una carpeta compartida que todos los equipos pueden ver.</p>
+            </div>
+          </details>
+
+          <details class="componente">
+            <summary>Protocolos de red <span class="componente__tag">¿Qué es? ¿Para qué sirve? Ejemplo</span></summary>
+            <div class="componente__body">
+              <p><strong>Qué es:</strong> reglas que definen cómo se comunican los equipos en la red.</p>
+              <p><strong>Para qué sirve:</strong> garantizar que los datos se envíen y reciban de forma correcta.</p>
+              <p><strong>Ejemplo:</strong> TCP/IP, el protocolo que usa Internet para transmitir datos.</p>
+            </div>
+          </details>
+
+          <details class="componente">
+            <summary>Servicios de red <span class="componente__tag">¿Qué es? ¿Para qué sirve? Ejemplo</span></summary>
+            <div class="componente__body">
+              <p><strong>Qué es:</strong> programas que funcionan en el servidor y ofrecen una función a los clientes.</p>
+              <p><strong>Para qué sirve:</strong> proveer servicios como direcciones IP, nombres de dominio o páginas web.</p>
+              <p><strong>Ejemplo:</strong> un servicio DHCP que asigna direcciones IP automáticamente.</p>
+            </div>
+          </details>
+
+          <details class="componente">
+            <summary>Permisos <span class="componente__tag">¿Qué es? ¿Para qué sirve? Ejemplo</span></summary>
+            <div class="componente__body">
+              <p><strong>Qué es:</strong> reglas que determinan qué puede hacer cada usuario con un recurso.</p>
+              <p><strong>Para qué sirve:</strong> proteger la información y evitar accesos no deseados.</p>
+              <p><strong>Ejemplo:</strong> solo lectura para algunos usuarios y lectura + escritura para otros.</p>
+            </div>
+          </details>
+
+          <details class="componente">
+            <summary>Seguridad <span class="componente__tag">¿Qué es? ¿Para qué sirve? Ejemplo</span></summary>
+            <div class="componente__body">
+              <p><strong>Qué es:</strong> el conjunto de medidas que protegen la red y la información.</p>
+              <p><strong>Para qué sirve:</strong> impedir accesos no autorizados y proteger los datos de la red.</p>
+              <p><strong>Ejemplo:</strong> exigencias de contraseñas, firewall y registro de eventos.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVIDOR Y CLIENTES ===== -->
+    <section id="cliente-servidor" class="section section--alt" aria-labelledby="cs-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--interactive">MODELO</span>
+          <h2 id="cs-title">Servidor y clientes</h2>
+          <p>El modelo cliente-servidor es la base de la mayoría de las redes con SOR.</p>
+        </header>
+
+        <div class="schema schema--cs" role="img" aria-label="Diagrama del modelo cliente-servidor con un servidor y tres equipos cliente">
+          <div class="schema__box schema__box--server">SERVIDOR</div>
+          <div class="schema__links schema__links--vert">
+            <span class="schema__line"></span>
+            <span class="schema__line"></span>
+            <span class="schema__line"></span>
+          </div>
+          <div class="schema__columns schema__columns--3">
+            <div><div class="schema__box">PC 1<span class="schema__sub">Cliente</span></div></div>
+            <div><div class="schema__box">PC 2<span class="schema__sub">Cliente</span></div></div>
+            <div><div class="schema__box">PC 3<span class="schema__sub">Cliente</span></div></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3 class="card__title">Servidor</h3>
+            <p>Equipo que proporciona recursos o servicios a los demás equipos de la red. Puede dedicarse a una sola función
+              (archivos, impresión, web) o cumplir varias.</p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Cliente</h3>
+            <p>Equipo que utiliza los recursos o servicios proporcionados por el servidor. Solicita datos y los muestra o procesa
+              según las necesidades del usuario.</p>
+          </div>
+        </div>
+
+        <div class="mini-grid" data-search-group>
+          <div class="mini-card">
+            <span class="mini-card__badge">EJEMPLO</span>
+            <h4 class="mini-card__title">Servidor de archivos</h4>
+            <p>Almacena y comparte documentos y carpetas.</p>
+          </div>
+          <div class="mini-card">
+            <span class="mini-card__badge">EJEMPLO</span>
+            <h4 class="mini-card__title">Servidor de impresión</h4>
+            <p>Administra impresoras para toda la red.</p>
+          </div>
+          <div class="mini-card">
+            <span class="mini-card__badge">EJEMPLO</span>
+            <h4 class="mini-card__title">Servidor web</h4>
+            <p>Entrega páginas y recursos mediante protocolos web.</p>
+          </div>
+          <div class="mini-card">
+            <span class="mini-card__badge">EJEMPLO</span>
+            <h4 class="mini-card__title">Servidor DNS</h4>
+            <p>Traduce nombres de dominio a direcciones IP.</p>
+          </div>
+          <div class="mini-card">
+            <span class="mini-card__badge">EJEMPLO</span>
+            <h4 class="mini-card__title">Servidor DHCP</h4>
+            <p>Asigna direcciones IP automáticamente a los equipos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TIPOS ===== -->
+    <section id="tipos" class="section" aria-labelledby="tipos-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--tech">TIPOS</span>
+          <h2 id="tipos-title">Tipos de Sistemas Operativos de Red</h2>
+          <p>Existen diferentes soluciones para administrar redes. Cada familia tiene su propia forma de trabajo y de administración.</p>
+        </header>
+
+        <div class="grid-3">
+          <article class="card card--type" data-search-group>
+            <h3 class="card__title">Windows Server</h3>
+            <p>Sistema operativo de Microsoft orientado a servidores y redes empresariales.</p>
+            <ul class="card__list">
+              <li><strong>Active Directory:</strong> servicio de directorio para organizar usuarios y equipos.</li>
+              <li><strong>Usuarios:</strong> cuentas centralizadas con permisos.</li>
+              <li><strong>Dominios:</strong> grupos de equipos administrados en conjunto.</li>
+              <li><strong>Políticas de grupo:</strong> reglas aplicadas a muchos equipos a la vez.</li>
+              <li><strong>Servicios de red:</strong> DHCP, DNS, archivos, impresión y más.</li>
+            </ul>
+          </article>
+
+          <article class="card card--type" data-search-group>
+            <h3 class="card__title">Linux Server</h3>
+            <p>Familia de sistemas basados en Linux utilizada ampliamente en servidores.</p>
+            <ul class="card__list">
+              <li><strong>Ubuntu Server:</strong> versión de Ubuntu pensada para servidores.</li>
+              <li><strong>Debian:</strong> distribución estable y muy usada en servidores.</li>
+              <li><strong>Red Hat Enterprise Linux:</strong> orientado a empresas y soporte comercial.</li>
+              <li><strong>AlmaLinux:</strong> alternativa gratuita y compatible con RHEL.</li>
+            </ul>
+            <p class="card__note">Estas distribuciones comparten el núcleo Linux, pero cada una se administra con sus propias herramientas.</p>
+          </article>
+
+          <article class="card card--type" data-search-group>
+            <h3 class="card__title">Unix y derivados</h3>
+            <p>Unix tuvo un rol histórico clave en los sistemas de red: muchos conceptos actuales de usuarios, permisos y servicios
+              provienen de esa tradición.</p>
+            <p>Los sistemas basados en Unix (como algunos BSD o los propios Linux) se utilizan en servidores y sistemas de alta
+              disponibilidad. No todos son iguales: cada uno presenta su propia administración, licencias y herramientas.</p>
+            <p class="card__note">La idea central es que el sistema opera en red con usuarios, procesos y servicios administrados por el sistema.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SISTEMAS CONOCIDOS ===== -->
+    <section id="sistemas" class="section section--alt" aria-labelledby="sist-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--feature">SISTEMAS</span>
+          <h2 id="sist-title">Sistemas Operativos de Red conocidos</h2>
+          <p>Estos sistemas se utilizan en todo el mundo para administrar redes y servidores.</p>
+        </header>
+
+        <div class="cards-grid sistema-grid" data-search-group>
+          <article class="card card--sistema" data-sistema="windows-server">
+            <h3 class="card__title">Windows Server</h3>
+            <p class="card__desc">Sistema de Microsoft para redes empresariales, con Active Directory y administración centralizada.</p>
+            <p class="card__uso"><strong>Uso habitual:</strong> redes de empresas e instituciones con equipos Windows.</p>
+            <p class="card__destacada"><strong>Destacado:</strong> Active Directory, para administrar usuarios y equipos en un dominio.</p>
+            <button class="btn btn--ghost btn--ver-mas" data-modal="winServer">Ver más</button>
+          </article>
+
+          <article class="card card--sistema" data-sistema="ubuntu">
+            <h3 class="card__title">Ubuntu Server</h3>
+            <p class="card__desc">Distribución de Linux popular en servidores por su facilidad de uso y comunidad amplia.</p>
+            <p class="card__uso"><strong>Uso habitual:</strong> servidores web, aplicaciones y servicios en la nube.</p>
+            <p class="card__destacada"><strong>Destacado:</strong> actualizaciones frecuentes y amplia documentación.</p>
+            <button class="btn btn--ghost btn--ver-mas" data-modal="ubuntuServer">Ver más</button>
+          </article>
+
+          <article class="card card--sistema" data-sistema="debian">
+            <h3 class="card__title">Debian</h3>
+            <p class="card__desc">Distribución de Linux reconocida por su estabilidad y por ser base de otros sistemas.</p>
+            <p class="card__uso"><strong>Uso habitual:</strong> servidores que requieren estabilidad a largo plazo.</p>
+            <p class="card__destacada"><strong>Destacado:</strong> su gran estabilidad y filosofía de software libre.</p>
+            <button class="btn btn--ghost btn--ver-mas" data-modal="debian">Ver más</button>
+          </article>
+
+          <article class="card card--sistema" data-sistema="rhel">
+            <h3 class="card__title">Red Hat Enterprise Linux</h3>
+            <p class="card__desc">Linux orientado a empresas con soporte técnico comercial.</p>
+            <p class="card__uso"><strong>Uso habitual:</strong> infraestructura crítica y grandes organizaciones.</p>
+            <p class="card__destacada"><strong>Destacado:</strong> soporte certificado y certificaciones ampliamente reconocidas.</p>
+            <button class="btn btn--ghost btn--ver-mas" data-modal="rhel">Ver más</button>
+          </article>
+
+          <article class="card card--sistema" data-sistema="freebsd">
+            <h3 class="card__title">FreeBSD</h3>
+            <p class="card__desc">Sistema basado en Unix, derivado de BSD, conocido por su rendimiento y estabilidad.</p>
+            <p class="card__uso"><strong>Uso habitual:</strong> servidores de alto rendimiento, almacenamiento y networking.</p>
+            <p class="card__destacada"><strong>Destacado:</strong> su robustez en entornos de red y su licencia permisiva.</p>
+            <button class="btn btn--ghost btn--ver-mas" data-modal="freebsd">Ver más</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICIOS DE RED ===== -->
+    <section id="servicios" class="section" aria-labelledby="serv-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--service">SERVICIO</span>
+          <h2 id="serv-title">Servicios de red</h2>
+          <p>Los sistemas operativos de red ofrecen servicios que los equipos de la red utilizan de forma constante.</p>
+        </header>
+
+        <div class="cards-grid" data-search-group>
+          <article class="card" data-search="dhcp ip asignar automatica">
+            <span class="card__tag">SERVICIO</span>
+            <h3 class="card__title">DHCP</h3>
+            <p>Asigna automáticamente direcciones IP a los dispositivos de la red.</p>
+          </article>
+          <article class="card" data-search="dns dominio ip nombres traducir">
+            <span class="card__tag">SERVICIO</span>
+            <h3 class="card__title">DNS</h3>
+            <p>Permite traducir nombres de dominio a direcciones IP.</p>
+          </article>
+          <article class="card" data-search="archivos almacenar compartir">
+            <span class="card__tag">SERVICIO</span>
+            <h3 class="card__title">Servidor de archivos</h3>
+            <p>Permite almacenar y compartir archivos en la red.</p>
+          </article>
+          <article class="card" data-search="impresion impresoras administrar compartidas">
+            <span class="card__tag">SERVICIO</span>
+            <h3 class="card__title">Servidor de impresión</h3>
+            <p>Administra impresoras compartidas por varios usuarios.</p>
+          </article>
+          <article class="card" data-search="web paginas http recursos">
+            <span class="card__tag">SERVICIO</span>
+            <h3 class="card__title">Servidor web</h3>
+            <p>Entrega páginas y recursos mediante protocolos web.</p>
+          </article>
+          <article class="card" data-search="directorio usuarios equipos centralizada">
+            <span class="card__tag">SERVICIO</span>
+            <h3 class="card__title">Directorio</h3>
+            <p>Permite administrar usuarios, equipos y recursos de manera centralizada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== USUARIOS Y PERMISOS ===== -->
+    <section id="usuarios-permisos" class="section section--alt" aria-labelledby="up-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--feature">ACCESO</span>
+          <h2 id="up-title">Usuarios y permisos</h2>
+          <p>El sistema de red identifica a las personas y controla qué puede hacer cada una.</p>
+        </header>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3 class="card__title">Usuario</h3>
+            <p>Cuenta que identifica a una persona o proceso en la red. Cada usuario tiene nombre y clave.</p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Grupo</h3>
+            <p>Conjunto de usuarios que comparten permisos. Facilita administrar muchos usuarios a la vez.</p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Contraseñas</h3>
+            <p>Secreto asociado a la cuenta que comprueba la identidad del usuario al iniciar sesión.</p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Recursos compartidos</h3>
+            <p>Elementos de la red puestos a disposición de los usuarios, como carpetas o impresoras.</p>
+          </div>
+        </div>
+
+        <div class="permiso-visual" role="group" aria-label="Ejemplo de usuario, grupo, archivo y permiso">
+          <div class="permiso-item">
+            <span class="permiso-item__label">Usuario</span>
+            <strong>Juan</strong>
+          </div>
+          <div class="permiso-item">
+            <span class="permiso-item__label">Grupo</span>
+            <strong>Administradores</strong>
+          </div>
+          <div class="permiso-item">
+            <span class="permiso-item__label">Archivo</span>
+            <strong>Documentos</strong>
+          </div>
+          <div class="permiso-item permiso-item--destacado">
+            <span class="permiso-item__label">Permiso</span>
+            <strong>Lectura + Escritura</strong>
+          </div>
+        </div>
+
+        <div class="grid-2 grid-2--narrow">
+          <div class="card card--auth">
+            <h3 class="card__title">Autenticación</h3>
+            <p><strong>→ Comprobar quién es el usuario.</strong> Es el paso de ingresar usuario y contraseña para confirmar la identidad.</p>
+          </div>
+          <div class="card card--auth">
+            <h3 class="card__title">Autorización</h3>
+            <p><strong>→ Determinar qué puede hacer ese usuario.</strong> Una vez identificado, el sistema aplica los permisos que tiene.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEGURIDAD ===== -->
+    <section id="seguridad" class="section" aria-labelledby="seg-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--security">SEGURIDAD</span>
+          <h2 id="seg-title">Seguridad en Sistemas Operativos de Red</h2>
+          <p>Proteger la red es una tarea constante. La información y los servicios deben mantenerse disponibles solo para quien corresponde.</p>
+        </header>
+
+        <div class="cards-grid seguridad-grid" data-search-group>
+          <article class="card card--security" data-search="contraseñas password fuertes">
+            <h4 class="card__title">Contraseñas seguras</h4>
+            <p>Usar claves largas y únicas dificulta que otros ingresen a las cuentas.</p>
+          </article>
+          <article class="card card--security" data-search="control acceso quién entra">
+            <h4 class="card__title">Control de acceso</h4>
+            <p>Define quién puede entrar a la red y a qué recursos.</p>
+          </article>
+          <article class="card card--security" data-search="permisos lectura escritura">
+            <h4 class="card__title">Permisos</h4>
+            <p>Limitan qué acciones puede realizar cada usuario con cada recurso.</p>
+          </article>
+          <article class="card card--security" data-search="actualizaciones parches parches seguridad">
+            <h4 class="card__title">Actualizaciones</h4>
+            <p>Corregir vulnerabilidades conocidas mantiene el sistema protegido.</p>
+          </article>
+          <article class="card card--security" data-search="firewall filtrar trafico bloquear">
+            <h4 class="card__title">Firewall</h4>
+            <p>Filtra el tráfico de red y bloquea accesos no autorizados.</p>
+          </article>
+          <article class="card card--security" data-search="antivirus antimalware malware">
+            <h4 class="card__title">Antivirus / antimalware</h4>
+            <p>Detecta y bloquea programas maliciosos en los equipos.</p>
+          </article>
+          <article class="card card--security" data-search="copias seguridad respaldo respaldo backup">
+            <h4 class="card__title">Copias de seguridad</h4>
+            <p>Permiten recuperar la información ante fallas o pérdidas.</p>
+          </article>
+          <article class="card card--security" data-search="cifrado encriptar datos confidenciales">
+            <h4 class="card__title">Cifrado</h4>
+            <p>Convierte los datos en un formato ilegible para quien no tiene la clave.</p>
+          </article>
+          <article class="card card--security" data-search="registro monitoreo logs eventos supervisar">
+            <h4 class="card__title">Registro y monitoreo</h4>
+            <p>Guardar y revisar eventos permite detectar problemas o accesos sospechosos.</p>
+          </article>
+          <article class="card card--security" data-search="minimo privilegio menos permisos necesarios">
+            <h4 class="card__title">Principio de mínimo privilegio</h4>
+            <p>Cada usuario recibe solo los permisos necesarios para su tarea, ni más.</p>
+          </article>
+        </div>
+
+        <div class="alert" role="note">
+          <span class="alert__icon" aria-hidden="true">⚠️</span>
+          <p>Una red segura no depende de una sola medida: la seguridad se construye mediante varias capas de protección.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VENTAJAS Y DESVENTAJAS ===== -->
+    <section id="ventajas" class="section section--alt" aria-labelledby="vent-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--feature">ANÁLISIS</span>
+          <h2 id="vent-title">Ventajas y desventajas</h2>
+          <p>Usar un SOR aporta grandes beneficios, pero también implica responsabilidades y costos.</p>
+        </header>
+
+        <div class="proscons">
+          <article class="card card--pros">
+            <h3 class="card__title">Ventajas</h3>
+            <ul class="check-list">
+              <li>Administración centralizada.</li>
+              <li>Compartición de recursos.</li>
+              <li>Mayor control de usuarios.</li>
+              <li>Gestión de permisos.</li>
+              <li>Facilidad para realizar copias de seguridad.</li>
+              <li>Administración de múltiples equipos.</li>
+              <li>Posibilidad de ofrecer diferentes servicios de red.</li>
+            </ul>
+          </article>
+
+          <article class="card card--cons">
+            <h3 class="card__title">Desventajas</h3>
+            <ul class="cross-list">
+              <li>Mayor complejidad.</li>
+              <li>Requiere conocimientos técnicos.</li>
+              <li>Puede necesitar hardware más potente.</li>
+              <li>La configuración y administración requieren tiempo.</li>
+              <li>Un problema en servicios centrales puede afectar a varios usuarios.</li>
+              <li>Puede implicar costos de licencias dependiendo de la solución elegida.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPARACIÓN ===== -->
+    <section id="comparacion" class="section" aria-labelledby="comp-para-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--tech">COMPARACIÓN</span>
+          <h2 id="comp-para-title">SOR vs. Sistemas Operativos de escritorio</h2>
+          <p>Son herramientas distintas pensadas para objetivos distintos.</p>
+        </header>
+
+        <div class="table-wrap" role="region" aria-label="Tabla comparativa entre sistemas operativos de red y de escritorio" tabindex="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Característica</th>
+                <th scope="col">SOR / Servidor</th>
+                <th scope="col">Escritorio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Objetivo</th>
+                <td>Administrar servicios y recursos de red</td>
+                <td>Uso personal o individual</td>
+              </tr>
+              <tr>
+                <th scope="row">Usuarios</th>
+                <td>Muchos usuarios</td>
+                <td>Generalmente uno o pocos</td>
+              </tr>
+              <tr>
+                <th scope="row">Administración</th>
+                <td>Centralizada</td>
+                <td>Principalmente local</td>
+              </tr>
+              <tr>
+                <th scope="row">Servicios</th>
+                <td>Muchos servicios de red</td>
+                <td>Servicios orientados al usuario</td>
+              </tr>
+              <tr>
+                <th scope="row">Recursos</th>
+                <td>Compartidos</td>
+                <td>Principalmente locales</td>
+              </tr>
+              <tr>
+                <th scope="row">Seguridad</th>
+                <td>Orientada a múltiples usuarios y servicios</td>
+                <td>Orientada al equipo/usuario</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="table-explanation">
+          Un sistema operativo de red pone el foco en <strong>administrar a otros equipos y compartir recursos</strong>,
+          mientras que un sistema de escritorio está pensado para <strong>la persona que usa esa computadora</strong>.
+          Eso no los hace opuestos absolutos: un sistema puede usar servicios de red y, a la vez, funcionar en escritorio,
+          pero en la práctica cada uno prioriza objetivos y usuarios diferentes.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== DEMO INTERACTIVA ===== -->
+    <section id="demo" class="section section--alt" aria-labelledby="demo-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--interactive">INTERACTIVO</span>
+          <h2 id="demo-title">¿Cómo funciona una red con SOR?</h2>
+          <p>Presiona un botón para simular una petición y observa qué sucede en la red.</p>
+        </header>
+
+        <div class="demo">
+          <div class="demo__nav" role="img" aria-label="Diagrama con un servidor arriba y tres computadoras abajo conectadas">
+            <div class="demo__node demo__node--server">SERVIDOR</div>
+            <div class="demo__connectors">
+              <div class="demo__line"><span class="demo__packet" id="packet0"></span></div>
+              <div class="demo__line"><span class="demo__packet" id="packet1"></span></div>
+              <div class="demo__line"><span class="demo__packet" id="packet2"></span></div>
+            </div>
+            <div class="demo__clients">
+              <div class="demo__node" id="client0">PC 1</div>
+              <div class="demo__node" id="client1">PC 2</div>
+              <div class="demo__node" id="client2">PC 3</div>
+            </div>
+          </div>
+
+          <div class="demo__controls">
+            <button class="btn btn--primary" data-demo="archivo">Solicitar archivo</button>
+            <button class="btn btn--primary" data-demo="login">Autenticar usuario</button>
+            <button class="btn btn--primary" data-demo="impresora">Compartir impresora</button>
+            <button class="btn btn--primary" data-demo="ip">Asignar IP</button>
+          </div>
+
+          <div class="demo__output" id="demoOutput" aria-live="polite">
+            <p>Elige una acción para comenzar la simulación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GLOSARIO ===== -->
+    <section id="glosario" class="section" aria-labelledby="glos-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--tech">GLOSARIO</span>
+          <h2 id="glos-title">Conceptos importantes</h2>
+          <p>Selecciona un término para ver su definición.</p>
+        </header>
+
+        <div class="glosario">
+          <div class="glosario__terms" role="list" aria-label="Lista de términos del glosario">
+            <button class="glosario__term" data-term="sor">SOR</button>
+            <button class="glosario__term" data-term="servidor">Servidor</button>
+            <button class="glosario__term" data-term="cliente">Cliente</button>
+            <button class="glosario__term" data-term="ip">IP</button>
+            <button class="glosario__term" data-term="dns">DNS</button>
+            <button class="glosario__term" data-term="dhcp">DHCP</button>
+            <button class="glosario__term" data-term="usuario">Usuario</button>
+            <button class="glosario__term" data-term="grupo">Grupo</button>
+            <button class="glosario__term" data-term="permiso">Permiso</button>
+            <button class="glosario__term" data-term="firewall">Firewall</button>
+            <button class="glosario__term" data-term="dominio">Dominio</button>
+            <button class="glosario__term" data-term="recurso">Recurso compartido</button>
+            <button class="glosario__term" data-term="protocolo">Protocolo</button>
+            <button class="glosario__term" data-term="autenticacion">Autenticación</button>
+            <button class="glosario__term" data-term="autorizacion">Autorización</button>
+          </div>
+
+          <div class="glosario__definition" id="glossaryDefinition" aria-live="polite">
+            <p class="glosario__placeholder">Elige un término de la lista para ver su definición.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== QUIZ ===== -->
+    <section id="quiz" class="section section--alt quiz-section" aria-labelledby="quiz-title">
+      <div class="container">
+        <header class="section__head">
+          <span class="badge badge--interactive">INTERACTIVO</span>
+          <h2 id="quiz-title">¿Cuánto aprendiste?</h2>
+          <p>Responde las 10 preguntas y comprueba tus conocimientos. El resultado se muestra al finalizar.</p>
+        </header>
+
+        <form class="quiz" id="quizForm" novalidate>
+          <div class="quiz__list" id="quizList"></div>
+
+          <div class="quiz__actions">
+            <button type="button" class="btn btn--primary" id="finishQuiz">Finalizar quiz</button>
+            <button type="button" class="btn btn--ghost" id="resetQuiz">Reiniciar quiz</button>
+          </div>
+
+          <div class="quiz__result" id="quizResult" role="status" aria-live="polite" hidden></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== OBJETIVO EDUCATIVO ===== -->
+    <section class="section section--objetivo" aria-labelledby="objetivo-title">
+      <div class="container">
+        <h2 id="objetivo-title">Objetivo educativo</h2>
+        <p>
+          Este sitio fue desarrollado con fines educativos para facilitar el aprendizaje de los conceptos fundamentales
+          relacionados con los Sistemas Operativos de Red y su utilización en redes informáticas.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logo2.png" alt="Logo de NetOS — Sistemas Operativos de Red">
+        <h2 class="footer__title">NetOS — Sistemas Operativos de Red</h2>
+        <p>Sitio educativo sobre Sistemas Operativos de Red.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Enlaces internos del sitio">
+        <h3 class="footer__heading">Enlaces</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#caracteristicas">Contenido</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+          <li><a href="#glosario">Glosario</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Tecnologías utilizadas</h3>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__copy">Proyecto educativo — 2026</p>
+  </footer>
+
+  <!-- ===== BOTÓN VOLVER ARRIBA ===== -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+
+  <!-- ===== MODAL "VER MÁS" ===== -->
+  <div class="modal" id="winServer" role="dialog" aria-modal="true" aria-labelledby="winServerTitle" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close aria-label="Cerrar">✕</button>
+      <h3 id="winServerTitle">Windows Server</h3>
+      <p>Sistema operativo de Microsoft dirigido a servidores. Su función central es brindar servicios de red como
+        archivos, colas de impresión, autenticación y aplicaciones.</p>
+      <ul>
+        <li><strong>Active Directory:</strong> organiza usuarios, equipos y contraseñas en un directorio.</li>
+        <li><strong>Dominio:</strong> agrupa equipos bajo una misma administración.</li>
+        <li><strong>Políticas de grupo:</strong> aplican reglas de configuración y seguridad a muchos equipos a la vez.</li>
+        <li><strong>Uso habitual:</strong> instituciones y empresas con infraestructura Windows.</li>
+      </ul>
+      <p>La administración se realiza mediante herramientas gráficas (como el Administrador del servidor), aunque
+        también cuenta con opciones de línea de comandos.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="ubuntuServer" role="dialog" aria-modal="true" aria-labelledby="ubuntuTitle" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close aria-label="Cerrar">✕</button>
+      <h3 id="ubuntuTitle">Ubuntu Server</h3>
+      <p>Edición de Ubuntu para servidores. Incluye herramientas para instalar servicios y se administra
+        principalmente por línea de comandos.</p>
+      <ul>
+        <li><strong>Uso habitual:</strong> servidores web, aplicaciones, correo y servicios en la nube.</li>
+        <li><strong>Destacado:</strong> comunidad grande y mucha documentación disponible.</li>
+        <li><strong>Actualizaciones:</strong> ofrece versiones con soporte a largo plazo (LTS).</li>
+      </ul>
+      <p>Al igual que otros sistemas Linux, la configuración suele hacerse con archivos de texto y comandos.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="debian" role="dialog" aria-modal="true" aria-labelledby="debianTitle" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close aria-label="Cerrar">✕</button>
+      <h3 id="debianTitle">Debian</h3>
+      <p>Distribución de Linux conocida por su estabilidad. Es la base de otros sistemas operativos populares.</p>
+      <ul>
+        <li><strong>Uso habitual:</strong> servidores que deben permanecer estables durante mucho tiempo.</li>
+        <li><strong>Destacado:</strong> su modelo de desarrollo comunitario y foco en software libre.</li>
+        <li><strong>Gestor de paquetes:</strong> permite instalar y actualizar programas fácilmente.</li>
+      </ul>
+      <p>Su administración es por línea de comandos, preferida por administradores experimentados.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="rhel" role="dialog" aria-modal="true" aria-labelledby="rhelTitle" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close aria-label="Cerrar">✕</button>
+      <h3 id="rhelTitle">Red Hat Enterprise Linux</h3>
+      <p>Distribución de Linux pensada para empresas, con soporte técnico comercial y ciclos de vida largos.</p>
+      <ul>
+        <li><strong>Uso habitual:</strong> infraestructura crítica de grandes organizaciones y centros de datos.</li>
+        <li><strong>Destacado:</strong> certificaciones reconocidas y compatibilidad garantizada.</li>
+        <li><strong>Ecosistema:</strong> varias distribuciones (como AlmaLinux) mantienen compatibilidad con RHEL.</li>
+      </ul>
+      <p>Su administración incluye herramientas gráficas y de línea de comandos.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="freebsd" role="dialog" aria-modal="true" aria-labelledby="freebsdTitle" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close aria-label="Cerrar">✕</button>
+      <h3 id="freebsdTitle">FreeBSD</h3>
+      <p>Sistema derivado de BSD y de la tradición Unix, orientado a servidores con altas exigencias de
+        rendimiento y estabilidad.</p>
+      <ul>
+        <li><strong>Uso habitual:</strong> servidores de red, almacenamiento y proveedores de Internet.</li>
+        <li><strong>Destacado:</strong> su pila de red robusta y su licencia permisiva.</li>
+        <li><strong>Relación con Unix:</strong> conserva muchos principios clásicos de Unix, pero no es idéntico a otros sistemas.</li>
+      </ul>
+      <p>Su administración es principalmente por configuración y comandos.</p>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
